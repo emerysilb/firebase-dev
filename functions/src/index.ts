@@ -8,9 +8,10 @@ admin.initializeApp();
 
 
 export const downloadImageEveryMin = functions.pubsub
-    .schedule("every 5 minutes")
+    .schedule("every 10 minutes")
     .onRun(async (context) => {
         var filename = `/${Date.now()}_ahwanee2.jpg`;
+        var mybucket = 'fir-functions-ac6ec.appspot.com'
 
         function download(uri: any, filename: any, callback: any) {
             return new Promise(function (resolve, reject) {
@@ -35,7 +36,7 @@ export const downloadImageEveryMin = functions.pubsub
             console.log(fileLocation)
             await admin
                 .storage()
-                .bucket("fir-functions-ac6ec.appspot.com")
+                .bucket(mybucket)
                 .upload(fileLocation, { destination: `ahwanee2${filename}` });
             return "uploaded";
         }
