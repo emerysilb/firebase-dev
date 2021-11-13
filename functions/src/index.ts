@@ -11,7 +11,9 @@ export const downloadImageEveryMin = functions.pubsub
     .schedule("every 10 minutes")
     .onRun(async (context) => {
         var filename = `/${Date.now()}_ahwanee2.jpg`;
-        var mybucket = 'fir-functions-ac6ec.appspot.com'
+        var mybucket = 'fir-functions-ac6ec.appspot.com';
+        var fileURL = "https://pixelcaster.com/yosemite/webcams/ahwahnee2.jpg";
+        var bucketFolderName = 'ahwanee2';
 
         function download(uri: any, filename: any, callback: any) {
             return new Promise(function (resolve, reject) {
@@ -37,12 +39,12 @@ export const downloadImageEveryMin = functions.pubsub
             await admin
                 .storage()
                 .bucket(mybucket)
-                .upload(fileLocation, { destination: `ahwanee2${filename}` });
+                .upload(fileLocation, { destination: `${bucketFolderName}${filename}` });
             return "uploaded";
         }
         try {
             await download(
-                "https://pixelcaster.com/yosemite/webcams/ahwahnee2.jpg",
+                fileURL,
                 filename,
                 async function () {
                     console.log("done");
