@@ -14,15 +14,19 @@
   },
   "main": "lib/index.js",
   "dependencies": {
+    "canvas": "^2.8.0",
     "firebase-admin": "^9.8.0",
     "firebase-functions": "^3.14.1",
     "fs": "0.0.1-security",
+    "get-pixels": "^3.3.3",
+    "gifencoder": "^2.0.1",
     "os": "^0.1.2",
     "request": "^2.88.2"
   },
   "devDependencies": {
-    "typescript": "^3.8.0",
-    "firebase-functions-test": "^0.2.0"
+    "@types/gif.js": "^0.2.2",
+    "firebase-functions-test": "^0.2.0",
+    "typescript": "^3.8.0"
   },
   "private": true
 }
